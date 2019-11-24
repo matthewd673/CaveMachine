@@ -51,6 +51,7 @@
     <Compile Include="ExtrapolateForm.Designer.cs">
       <DependentUpon>ExtrapolateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extrapolator.cs" />
     <Compile Include="FillRule.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="MainForm.cs">
