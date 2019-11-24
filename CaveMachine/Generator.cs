@@ -233,6 +233,7 @@ namespace CaveMachine
 
         public static bool isEdge(int x, int y)
         {
+            /*
             int caveId = map[x, y].caveId;
             int surroundingCt = 0;
             for (int m = -1; m <= 1; m++)
@@ -246,7 +247,25 @@ namespace CaveMachine
                     }
                 }
             }
-            if (surroundingCt > 0)
+            */
+
+            int surroundingCt = 0;
+            if (map[x, y].wall)
+            {
+                for (int i = -1; i <= 1; i++)
+                {
+                    for (int j = -1; j <= 1; j++)
+                    {
+                        if (safe(x + i, y + j))
+                        {
+                            if (map[x + i, y + j].wall && !map[x + i, y + j].tunnel)
+                                surroundingCt++;
+                        }
+                    }
+                }
+            }
+
+            if (surroundingCt < 8 && surroundingCt >= 1)
                 return true;
             else
                 return false;
@@ -265,7 +284,7 @@ namespace CaveMachine
             {
                 for (int j = 0; j < height; j++)
                 {
-                    if (map[i, j].edge && !map[i, j].wall)
+                    if (map[i, j].edge)
                     {
                         points.Add(new Vector2(i, j));
                     }

@@ -75,7 +75,7 @@ namespace CaveMachine
                     if (i != j)
                     {
                         float distance = getDistance(points[i], points[j]);
-                        if (distance < scale * 1.5)
+                        if (distance >= scale && distance <= scale * Math.Sqrt(2))
                         {
                             plotLine(points[i], points[j]);
                         }
@@ -120,7 +120,7 @@ namespace CaveMachine
             int numerator = longest >> 1;
             for (int i = 0; i <= longest; i++)
             {
-                sMap[x, y] = new Tile(wall: true);
+                sMap[x, y] = new Tile(wall: true, extrapolated: true);
                 numerator += shortest;
                 if (!(numerator < longest))
                 {

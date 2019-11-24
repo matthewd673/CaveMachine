@@ -83,20 +83,21 @@ namespace CaveMachine
                 for(int j = 0; j < height; j++)
                 {
                     Rectangle drawRect = new Rectangle(i, j, 1, 1);
+
                     if (Generator.map[i, j].wall)
                     {
-                        b.DrawRectangle(Pens.Black, drawRect);
+                        if (Generator.map[i, j].edge)
+                            b.DrawRectangle(Pens.White, drawRect);
+                        else
+                            b.DrawRectangle(Pens.Black, drawRect);
                     }
                     else
                     {
-                        if (!Generator.map[i, j].edge)
-                            b.DrawRectangle(new Pen(caveColors[Generator.map[i, j].caveId - 1], 1), drawRect);
-                        else
-                            b.DrawRectangle(Pens.White, drawRect);
-                        //b.DrawRectangle(new Pen(caveColors[Generator.map[i, j].caveId], 1), drawRect);
+                        b.DrawRectangle(new Pen(caveColors[Generator.map[i, j].caveId], 1), drawRect);
                     }
                     if (Generator.map[i, j].tunnel)
                         b.DrawRectangle(Pens.White, drawRect);
+
                 }
             }
 

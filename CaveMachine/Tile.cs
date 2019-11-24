@@ -14,14 +14,16 @@ namespace CaveMachine
         public bool edge;
         public bool portal;
         public bool tunnel;
+        public bool extrapolated;
 
-        public Tile(bool wall, int caveId = 0, bool edge = false, bool portal = false, bool tunnel = false)
+        public Tile(bool wall, int caveId = 0, bool edge = false, bool portal = false, bool tunnel = false, bool extrapolated = false)
         {
             this.wall = wall;
             this.caveId = caveId;
             this.edge = edge;
             this.portal = portal;
             this.tunnel = tunnel;
+            this.extrapolated = extrapolated;
         }
 
     }
